@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:security="http://www.springframework.org/schema/security"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd">
+
+	<security:http auto-config="true" use-expressions="false"><!-- 5.0버전의 
+			경우 뭔가 더 써야함. 위 주석에서 -5.0을 지울것 -->
+		<security:intercept-url pattern="/sample/admin"
+			access="ROLE_ADMIN" />
+		<!-- 인가를 받은 것들만 권한을 부여한다 . 오라클과 달리 권한이 롤이다 -->
+
+	</security:http>
+
+	<security:authentication-manager>
+
+		<security:authentication-provider>
+			<security:password-encoder ref="sampleEncoder" />
+			<security:user-service><!-- 까만모자를 여러개 -->
+				<security:user name="admin" password="admin"
+					authorities="ROLE_ADMIN" />
+			</security:user-service>
+		</security:authentication-provider>
+	</security:authentication-manager>
+
+	<bean id="sampleEncoder"
+		class="org.springframework.security.crypto.password.NoOpPasswordEncoder"></bean>
+
+</beans>
