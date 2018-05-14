@@ -10,6 +10,7 @@
 </head>
 <body><h1>admin</h1>
 <h2><sec:authentication property="principal.username"/></h2>
+<h2><sec:authentication property="principal.displayName"/></h2>
 
 </body>
 </html>

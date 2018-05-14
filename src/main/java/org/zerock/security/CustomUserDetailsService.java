@@ -30,10 +30,15 @@ public class CustomUserDetailsService implements UserDetailsService {
 
 		MemberVO vo = mapper.read(username);
 
-		User user = new User(vo.getUid(), vo.getUpw(), vo.getAuthList().stream()
-				.map(authVO -> new SimpleGrantedAuthority(authVO.getAuth())).collect(Collectors.toList()));
-		// 세번째는 변화 stream은 일렬로 만드는것 여기서의 map은 매핑
-
+		/*User user = new User(vo.getUid(), vo.getUpw(), 
+				vo.getAuthList().stream()
+				.map(authVO -> new SimpleGrantedAuthority(authVO.getAuth()))
+				.collect(Collectors.toList()));
+		// 세번째는 변화 stream은 일렬로 만드는것 여기서의 map은 매핑 */
+		
+		User user = new CustumMemberDetails(vo);
+		
+		
 		return user;
 	}
 

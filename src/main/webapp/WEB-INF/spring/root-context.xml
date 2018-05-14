@@ -22,7 +22,7 @@
 
 		<property value="30000" name="idleTimeout" />
 <property value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy" name="driverClassName" />
-<property value="jdbc:log4jdbc:mysql://10.10.10.24:3306/jr01?useSSL=false" name="jdbcUrl" />
+<property value="jdbc:log4jdbc:mysql://10.10.10.11:3306/jr01?useSSL=false" name="jdbcUrl" />
 
 
 <!-- 		<property value="com.mysql.jdbc.Driver" name="driverClassName" />
