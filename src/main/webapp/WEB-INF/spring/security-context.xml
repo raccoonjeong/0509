@@ -4,13 +4,12 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd">
 
-	<security:http auto-config="true" use-expressions="false"><!-- 5.0버전의 
-			경우 뭔가 더 써야함. 위 주석에서 -5.0을 지울것 -->
+	<security:http auto-config="true" use-expressions="false">
 			<security:form-login login-page="/myLogin" />
-		<security:intercept-url pattern="/sample/admin"
-			access="ROLE_ADMIN" />
-		<!-- 인가를 받은 것들만 권한을 부여한다 . 오라클과 달리 권한이 롤이다 -->
-
+			
+		<security:remember-me key="jr01" token-validity-seconds="3600" data-source-ref="dataSource"/> <!-- http 관련된 설정 -->
+		<security:intercept-url pattern="/sample/admin" access="ROLE_ADMIN" />
+	
 	</security:http>
 
 	<security:authentication-manager>

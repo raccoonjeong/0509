@@ -16,10 +16,12 @@
 </c:if>
 
 <form action="/login" method="post"><!-- 스프링 시큐리티가 지정한 대로 써야함 -->
+
 <input type='text' name="username">
 <input type='text' name="password">
 <input type='hidden' name="${_csrf.parameterName}"
 value ="${_csrf.token}">
+<input type = "checkbox" name="remember-me">
 <button>LOGIN</button>
 </form>
 
